@@ -66,7 +66,16 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 CORS_ALLOW_ALL_ORIGINS = True  # Zezwól na dostęp z wszystkich adresów
-
+# CORS_ALLOWED_ORIGINS = ["*"]
+CORS_ALLOW_HEADERS = ['*']
+CORS_ALLOW_METHODS = [
+'DELETE',
+'GET',
+'OPTIONS',
+'PATCH',
+'POST',
+'PUT',
+]
 ROOT_URLCONF = 'taxHackYeah.urls'
 
 TEMPLATES = [

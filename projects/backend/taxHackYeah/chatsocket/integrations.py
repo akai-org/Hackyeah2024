@@ -58,10 +58,11 @@ class GeneralTaxAssistance(OpenAIClient):
             "Kwota czynności PLN": ""
         }
 
-    def process(self) -> str|None:
+    def process(self,first_message) -> str|None:
         try:
             print(self.data,1)
-            thread = self.client.beta.threads.create()
+            if first_message:
+                thread = self.client.beta.threads.create()
             message = self.client.beta.threads.messages.create(
                 thread_id=thread.id,
                 role="user",
