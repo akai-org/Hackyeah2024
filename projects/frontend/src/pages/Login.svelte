@@ -10,8 +10,9 @@ async function login(e) {
 
   console.log("PASS:", username, password);
   try {
-    const response = fetch(
-      "/api/token",
+    console.log("herhe");
+    const response = await fetch(
+      "http://192.168.13.68:8000/api/token/",
       {
         method: "POST",
         body: JSON.stringify({
@@ -19,7 +20,9 @@ async function login(e) {
           password,
         }),
       }
-    ).await;
+    );
+
+    console.log("adf", response);
 
 
     if (response.ok === false) {
