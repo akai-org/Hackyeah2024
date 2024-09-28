@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'channels',
     'rest_framework_simplejwt',
    'drf_yasg',
+    'corsheaders'
 
 ]
 REST_FRAMEWORK = {
@@ -61,7 +62,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+CORS_ALLOW_ALL_ORIGINS = True  # Zezwól na dostęp z wszystkich adresów
 
 ROOT_URLCONF = 'taxHackYeah.urls'
 

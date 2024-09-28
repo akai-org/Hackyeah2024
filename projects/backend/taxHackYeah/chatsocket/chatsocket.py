@@ -1,8 +1,7 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
-from channels.generic.websocket import AsyncWebsocketConsumer
-from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.exceptions import AuthenticationFailed
+from .integrations import InputValidation,GeneralTaxAssistance
 
 class ChatSockets(AsyncWebsocketConsumer):
 
@@ -16,12 +15,30 @@ class ChatSockets(AsyncWebsocketConsumer):
             await self.close()
 
     async def disconnect(self, close_code):
-        pass
+        await self.close()
 
     async def receive(self, text_data):
+        if len(text_data) > 1000:
+            await self.send(text_data=json.dumps({
+                'message': 'Message is too long'
+            }))
+
+
         text_data_json = json.loads(text_data)
-        message = text_data_json['message']
+        message = text_data_json
         print('Received message:', message)
+        input_validation = InputValidation(message)
+        if not input_validation.validate():
+            await self.send(text_data=json.dumps({
+                'message': 'Invalid input'
+            }))
+            return
+        chat_bot = GeneralTaxAssistance(message)
+        message = chat_bot.process(text=message)
+
+
+
+
         await self.send(text_data=json.dumps({
             'message': message
         }))
