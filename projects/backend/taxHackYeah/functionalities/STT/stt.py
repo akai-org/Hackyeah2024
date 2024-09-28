@@ -1,5 +1,6 @@
 import speech_recognition as sr
 from pydub import AudioSegment
+import os
 
 # Convert MP3 to WAV using pydub
 def mp3_to_wav(mp3_path, wav_path):
@@ -7,17 +8,18 @@ def mp3_to_wav(mp3_path, wav_path):
     sound.export(wav_path, format="wav")
 
 # Recognize speech using the SpeechRecognition library
-def wav_to_text(wav_path):
+def wav_to_text(wav_path, language = 'pl-PL'):
     recognizer = sr.Recognizer()
     with sr.AudioFile(wav_path) as source:
         audio_data = recognizer.record(source)
-        try:
-            text = recognizer.recognize_google(audio_data, language='pl-PL')
-            return text
-        except sr.UnknownValueError:
-            return "Sorry, I could not understand the audio."     
-        except sr.RequestError:
-            return "Error: Could not request results."
+        text = recognizer.recognize_google(audio_data, language=language)
+      
+        if os.path.exists(wav_path):
+            os.remove(wav_path)
+
+        return text
+        
+
 
 def mp3_to_text(mp3_path):
     temp = 'temp.wav'
