@@ -104,7 +104,7 @@ function sendVoiceToBackend(audioBlob) {
         id: -1,
         time: Date.now(),
         owner: "user",
-        text: input,
+        text: data.message,
       });
       awaitResponse();
 
