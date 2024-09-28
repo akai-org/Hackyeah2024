@@ -1,3 +1,16 @@
-h1 {
-  height: 10rem;
+html {
+  height: 100%;
 }
+
+body {
+  height: 100vh;
+}
+
+body, div {
+  outline: 1px solid black;
+}
+
+main {
+  height: 100%;
+}
+
