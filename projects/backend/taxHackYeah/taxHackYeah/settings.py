@@ -77,15 +77,18 @@ WSGI_APPLICATION = 'taxHackYeah.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydb',              # Nazwa bazy danych, tak jak w docker-compose
-        'USER': 'admin',              # Użytkownik PostgreSQL
-        'PASSWORD': 'admin',          # Hasło użytkownika
-        'HOST': 'postgres',           # Nazwa usługi PostgreSQL z docker-compose
-        'PORT': '5432',               # Port PostgreSQL
+        'NAME': os.getenv('PGDB'),
+        'USER': os.getenv('PGUSER'),
+        'PASSWORD': os.getenv("PGPASS"),
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
