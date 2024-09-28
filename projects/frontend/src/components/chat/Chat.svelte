@@ -10,10 +10,16 @@ onMount(() => {
 });
 
 messageStore.subscribe(msg => {
+  // WTF??
+  console.log("SUBSCRIE", msg, messages);
+  if (!msg.message) {
+    return;
+  }
+
   messages.push({
     text: msg.message,
     time: new Date(msg.time),
-    onwer: "server",
+    owner: "server",
     id: msg.id,
   });
 
@@ -74,16 +80,20 @@ function keyEnter(e) {
 
 .body {
   padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
   min-height: 50%;
 }
 
 .message {
   margin: 2rem 1rem;
+  padding: 1rem;
   max-width: 75%;
 }
 
 .message-user {
   margin-left: auto;
+  text-align: right;
 }
 
 .message-server {
