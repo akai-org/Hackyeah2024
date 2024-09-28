@@ -6,6 +6,9 @@ let messages = $state([]);
 let input = $state("");
 let isDisabled = $state(false);
 let isAudioRunning = $state(false);
+// Special here means case when we detect that message contains `PCC` word therefore ask the user
+// if they want help with it??
+let specialCase = $state(true);
 
 onMount(() => {
 });
@@ -15,8 +18,22 @@ messageStore.subscribe(msg => {
     return;
   }
 
+  // "should" always evaluate to `true` -- sanity check
   if (messages.at(-1).awaiting) {
     messages.pop();
+  }
+
+  // Check if we should suggest a help with PCC tax shit
+  {
+    let m = msg.message;
+
+    if (
+      m.indexOf("PCC-3") !== -1
+      || m.indexOf("PCC3") !== -1
+      // TODO: Maybe `PCC` as well
+    ) {
+      specialCase = true;
+    }
   }
 
   messages.push({
@@ -30,6 +47,10 @@ messageStore.subscribe(msg => {
 });
 
 function send() {
+  if (input === "") {
+    // NOPE
+    return;
+  }
   wsSend.set(JSON.stringify({ message: input }));
   messages.push({
     id: -1,
@@ -56,7 +77,7 @@ function audio() {
   if (isAudioRunning === true) {
     stopRecording();
     isAudioRunning = false;
-    disabled = true;
+    awaitResponse();
 
     return;
   }
@@ -89,7 +110,7 @@ function sendVoiceToBackend(audioBlob) {
   const formData = new FormData();
   formData.append('audio', audioBlob, 'voice.wav');
 
-  // PCC3 PCC-3 ?PCC
+  // TODO: IP
   fetch('/api/upload-voice', {
     method: 'POST',
     body: formData,
@@ -99,13 +120,14 @@ function sendVoiceToBackend(audioBlob) {
       return response.json();
     })
     .then(data => {
-      wsSend.set(JSON.stringify({ message: data.message }));
       messages.push({
         id: -1,
         time: Date.now(),
         owner: "user",
         text: data.message,
       });
+      wsSend.set(JSON.stringify({ message: data.message }));
+
       awaitResponse();
 
       console.log('Voice sent successfully:', data);
@@ -120,6 +142,41 @@ function awaitResponse() {
     awaiting: true,
     text: "Awating...",
   });
+  isDisabled = true;
+}
+
+function sendFile(e) {
+  e.preventDefault();
+
+
+  const fileInput = document.getElementById("special_file");
+  const file = fileInput.files[0];
+
+  if (file !== undefined) {
+    const formData = new FormData();
+    formData.append(file.name, file);
+
+    // TODO: IP
+    fetch('/upload-file', {
+      method: 'POST',
+      body: formData,
+    })
+      .then(data => {
+        console.log('File uploaded successfully:', data);
+
+        messages.push({
+          text: file.name,
+          owner: "user",
+          isFile: true,
+        });
+        awaitResponse();
+      })
+      .catch(error => {
+        console.error('Error uploading file:', error);
+      });
+  } else {
+    alert('Please select a file to upload.');
+  }
 }
 </script>
 
@@ -130,7 +187,7 @@ function awaitResponse() {
   <div class="body">
     {#each messages as message}
       <div
-        class="message message-{message.owner}"
+        class="message message--{message.owner} {message.isFile && 'message--file'}"
       >
         <span>
           {message.text}
@@ -142,6 +199,12 @@ function awaitResponse() {
     <input onkeypresscapture={keyEnter} type="text" bind:value={input} disabled={isDisabled}>
     <button onclick={send} disabled={isDisabled}>send</button>
     <button onclick={audio} disabled={isDisabled}>{isAudioRunning ? "STOP AUDIO" : "GO AUDIO"}</button>
+
+    <form onsubmit={sendFile}>
+      <input class="{specialCase ? '' : 'hidden'}" type="file" id="special_file" disabled={isDisabled}>
+      <input type="submit" value="Send file" disabled={isDisabled}>
+    </form>
+
     <button class="hidden">Czy checesz pomocy w wypełnienieniu deklaracji PPC-3?</button>
   </div>
 </div>
@@ -169,13 +232,21 @@ function awaitResponse() {
   max-width: 75%;
 }
 
-.message-user {
+.message--user {
   margin-left: auto;
   text-align: right;
 }
 
-.message-server {
+.message--server {
   margin-right: auto;
+}
+
+.message--file {
+  background-color: purple;
+}
+
+.hidden {
+  visibility: hidden;
 }
 </style>
 
