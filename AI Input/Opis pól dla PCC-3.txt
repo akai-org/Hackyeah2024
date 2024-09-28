@@ -1,0 +1,110 @@
+Kod opisu formularza: PCC-3 Wariant: 6 Nazwa:
+DEKLARACJA W SPRAWIE PODATKU OD CZYNNOŚCI CYWILNOPRAWNYCH
+
+Numer pola: 4
+Nazwa: DATA DOKONANIA CZYNNOŚCI
+Obowiązkowe? Tak Typ: Data
+Opis: Data dokonania czynności nie może być wcześniejsza niż 01.01.2024 r. i nie może być
+późniejsza niż data złożenia deklaracji
+Reguła: data dokonania czynności jest większa lub równa 01.01.2024 r. i jest mniejsza lub równa
+dacie złożenia deklaracji
+P4>=01.01.2024 ORAZ P4<=data złożenia
+
+Numer pola: 6
+Nazwa: CEL ZŁOŻENIA DEKLARACJI
+Obowiązkowe? Tak Typ: Całkowite
+Opis: Cel złożenia deklaracji musi przyjmować wartość: 1 (złożenie deklaracji)
+Reguła: cel złożenia deklaracji jest równy: 1 (złożenie deklaracji)
+P6=1
+
+Numer pola: 7
+Nazwa: PODMIOT SKŁADAJĄCY DEKLARACJĘ
+Obowiązkowe? Tak Typ: Całkowite
+Opis: Podmiot składający deklarację musi przyjmować wartość: 1 (podmiot zobowiązany solidarnie
+do zapłaty podatku), lub 5 (inny podmiot).
+Reguła: podmiot składający deklarację jest równy: 1 (podmiot zobowiązany solidarnie do zapłaty
+podatku) lub 5 (inny podmiot)
+P7=1 LUB P7=5
+
+Numer pola: 20
+Nazwa: PRZEDMIOT OPODATKOWANIA
+Obowiązkowe? Tak Typ: Całkowite
+Opis: Przedmiot opodatkowania musi przyjmować wartość: 1 (umowa)
+Reguła: przedmiot opodatkowania jest równy: 1 (umowa)
+P20 = 1
+
+Numer pola: 21
+Nazwa: MIEJSCE POŁOŻENIA RZECZY LUB WYKONYWANIA PRAWA MAJĄTKOWEGO
+Obowiązkowe? Nie Typ: Całkowite
+Opis: Miejsce położenia rzeczy lub miejsce wykonywania prawa majątkowego musi przyjmować
+wartość: 0 (jest niewypełnione), 1 (terytorium RP) lub 2 (poza terytorium RP),
+Reguła: miejsce położenia rzeczy lub wykonywania prawa majątkowego jest równe: 0 (jest
+niewypełnione w przypadku obliczenia podatku od umowy spółki / zmiany umowy) lub 1 (terytorium
+RP) lub 2 (poza terytorium RP)
+P21=0 LUB P21=1 LUB P21=2
+
+Numer pola: 22
+Nazwa: MIEJSCE DOKONANIA CZYNNOŚCI CYWILNOPRAWNEJ
+Obowiązkowe? Nie Typ: Całkowite
+Opis: Miejsce dokonania czynności cywilnoprawnej musi przyjmować wartość: 0 (jest
+niewypełnione), 1 (terytorium RP) lub 2 (poza terytorium RP).
+Reguła: miejsce dokonania czynności cywilnoprawnej jest równe: 0 (jest niewypełnione) lub 1
+(terytorium RP) lub 2 (poza terytorium RP)
+P22=0 LUB P22=1 LUB P22=2
+
+Numer pola: 23
+Nazwa: ZWIĘZŁE OKREŚLENIE TREŚCI I PRZEDMIOTU CZYNNOŚCI CYWILNOPRAWNEJ
+Obowiązkowe? Tak Typ: Tekstowe (należy podać markę, model samochodu, rok produkcji i inne
+istotne informacje o stanie technicznym)
+
+Numer pola: 26
+Nazwa: PODSTAWA OPODATKOWANIA DLA UMOWY SPRZEDAŻY
+Obowiązkowe? Tak (w schemie nieobowiązkowe) Typ: Rzeczywiste Miano: PLN
+Zaokrąglenie: do pełnych złotych
+Opis: Podstawa opodatkowania dla umowy sprzedaży musi być większa lub równa 1000 PLN
+ oraz podana po zaokrągleniu do pełnych złotych.
+Reguła: podstawa opodatkowania dla umowy sprzedaży jest większa lub równa 1000 PLN;
+zaokrąglona do pełnych złotych WYLICZENIE=ROUN(P26, 0) O ILE P26>=1000
+
+Numer pola: 27
+Nazwa:OBLICZONY NALEŻNY PODATEK OD UMOWY SPRZEDAŻY
+Obowiązkowe? Tak (w schemie nieobowiązkowe) Typ: Rzeczywiste Miano: PLN
+Zaokrąglenie: do pełnych złotych
+Opis: Obliczony należny podatek od czynności cywilnoprawnej dla umowy sprzedaży musi być
+równy iloczynowi podstawy opodatkowania i stawki podatku, zaokrąglonemu do pełnych złotych.
+Reguła: obliczony należny podatek od czynności cywilnoprawnej dla umowy sprzedaży jest równy
+iloczynowi: podstawa opodatkowania razy stawka podatku, po zaokrągleniu do pełnych złotych
+WYLICZENIE=ROUN(P26*2%, 0)
+
+Numer pola: 46
+Nazwa: KWOTA NALEŻNEGO PODATKU
+Obowiązkowe? Tak (w schemie nieobowiązkowe) Typ: Rzeczywiste Miano: PLN
+Zaokrąglenie: do pełnych złotych
+Opis: Kwota należnego podatku od czynności cywilnoprawnych musi być równa obliczonemu
+należnemu podatkowi od czynności cywilnoprawnej, której dotyczy deklaracja.
+Reguła: Kwota należnego podatku od czynności cywilnoprawnych jest równa obliczonemu należnemu
+podatkowi od czynności cywilnoprawnej
+WYLICZENIE=P27
+
+Numer pola: 53
+Nazwa: KWOTA PODATKU DO ZAPŁATY
+Obowiązkowe? Tak Typ: Rzeczywiste Miano: PLN Zaokrąglenie: do pełnych złotych
+Opis: Kwota podatku do zapłaty musi być równa kwocie obliczonego podatku należnego
+Reguła: kwota podatku do zapłaty jest równa kwocie obliczonego podatku należnego po zaokrągleniu
+do pełnych złotych
+WYLICZENIE=ROUN(P46, 0)
+
+Numer pola: 62
+Nazwa: LICZBA DOŁĄCZONYCH ZAŁĄCZNIKÓW PCC-3/A
+Obowiązkowe? Nie Typ: Całkowite
+Opis: W przypadku gdy podmiotem składającym deklarację jest podmiot zobowiązany solidarnie
+do zapłaty podatku, to liczba dołączonych załączników PCC-3/A musi być większa od zera. W
+przeciwnym razie liczba dołączonych załączników PCC-3/A jest równa zero.
+Reguła: JEŚLI podmiotem składającym deklarację jest: podmiot zobowiązany solidarnie do zapłaty
+podatku P7=1 TO liczba dołączonych załączników PCC-3/A jest większa od zera P62>0
+W PRZECIWNYM RAZIE liczba dołączonych załączników PCC-3/A jest równa zero P62=0
+Numer pola: Brak
+Nazwa: POUCZENIA
+Obowiązkowe? Tak Typ: Całkowite
+Opis: POUCZENIA musi przyjmować wartość: 1 (Potwierdzam i akceptuję pouczenia)
+Reguła: POUCZENIA jest równy: 1 (Potwierdzam i akceptuję pouczenia)
