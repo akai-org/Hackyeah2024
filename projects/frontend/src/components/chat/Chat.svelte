@@ -5,15 +5,18 @@ import { onMount } from "svelte";
 let messages = $state([]);
 let input = $state("");
 let isDisabled = $state(false);
+let isAudioRunning = $state(false);
 
 onMount(() => {
 });
 
 messageStore.subscribe(msg => {
-  // WTF??
-  console.log("SUBSCRIE", msg, messages);
   if (!msg.message) {
     return;
+  }
+
+  if (messages.at(-1).awaiting) {
+    messages.pop();
   }
 
   messages.push({
@@ -34,6 +37,7 @@ function send() {
     owner: "user",
     text: input,
   });
+  awaitResponse();
 
   input = "";
   isDisabled = true;
@@ -44,6 +48,78 @@ function keyEnter(e) {
   if (e.keyCode === 13) {
     send();
   }
+}
+
+let mediaRecorder;
+
+function audio() {
+  if (isAudioRunning === true) {
+    stopRecording();
+    isAudioRunning = false;
+    disabled = true;
+
+    return;
+  }
+
+  let audioChunks = [];
+
+  navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+      isAudioRunning = true;
+      mediaRecorder = new MediaRecorder(stream);
+
+      mediaRecorder.ondataavailable = event => {
+        audioChunks.push(event.data);
+      };
+
+      mediaRecorder.onstop = () => {
+        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+        sendVoiceToBackend(audioBlob);
+      };
+
+      mediaRecorder.start();
+    });
+}
+
+function stopRecording() {
+  mediaRecorder.stop();
+}
+
+function sendVoiceToBackend(audioBlob) {
+  const formData = new FormData();
+  formData.append('audio', audioBlob, 'voice.wav');
+
+  // PCC3 PCC-3 ?PCC
+  fetch('/api/upload-voice', {
+    method: 'POST',
+    body: formData,
+  })
+    .then(response => {
+      console.log("AUDIO RESPONSE:", response);
+      return response.json();
+    })
+    .then(data => {
+      wsSend.set(JSON.stringify({ message: data.message }));
+      messages.push({
+        id: -1,
+        time: Date.now(),
+        owner: "user",
+        text: input,
+      });
+      awaitResponse();
+
+      console.log('Voice sent successfully:', data);
+    })
+    .catch(error => {
+      console.error('Error sending voice:', error);
+    });
+}
+
+function awaitResponse() {
+  messages.push({
+    awaiting: true,
+    text: "Awating...",
+  });
 }
 </script>
 
@@ -65,6 +141,8 @@ function keyEnter(e) {
   <div class="input">
     <input onkeypresscapture={keyEnter} type="text" bind:value={input} disabled={isDisabled}>
     <button onclick={send} disabled={isDisabled}>send</button>
+    <button onclick={audio} disabled={isDisabled}>{isAudioRunning ? "STOP AUDIO" : "GO AUDIO"}</button>
+    <button class="hidden">Czy checesz pomocy w wypełnienieniu deklaracji PPC-3?</button>
   </div>
 </div>
 
