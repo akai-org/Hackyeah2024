@@ -8,7 +8,6 @@ let password = $state("");
 async function login(e) {
   e.preventDefault();
 
-  page = 1;
   console.log("PASS:", username, password);
   try {
     const response = fetch(
@@ -40,6 +39,8 @@ async function login(e) {
     window.X_HIDDEN = {};
     window.X_HIDDEN.refresh = json.refresh;
     window.X_HIDDEN.access = json.access;
+
+    page = 1;
   } catch (err) {
     console.error(err);
 
