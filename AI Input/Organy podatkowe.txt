@@ -1,0 +1,19 @@
+Organy podatkowe
+
+Nie wiesz który organ jest właściwy w sprawach podatku od czynności cywilnoprawnych? Sprawdź
+
+Organem podatkowym właściwym rzeczowo w sprawach podatku od czynności cywilnoprawnych (PCC) jest naczelnik urzędu skarbowego.
+
+Organem podatkowym właściwym miejscowo w sprawach PCC od umów, których przedmiotem są rzeczy znajdujące się na terytorium Rzeczypospolitej Polskiej lub prawa majątkowe wykonywane w kraju, jest:
+
+1.od przeniesienia własności nieruchomości, własnościowego spółdzielczego prawa do lokalu mieszkalnego, spółdzielczego prawa do lokalu użytkowego oraz wynikających z przepisów prawa spółdzielczego: prawa do domu jednorodzinnego i prawa do lokalu w małym domu mieszkalnym, prawa do miejsca postojowego e garażu wielostanowiskowym lub prawa użytkowania wieczystego - naczelnik urzędu skarbowego właściwy ze względu na miejsce położenia nieruchomości,
+2.od przeniesienia własności rzeczy lub praw majątkowych, innych niż wymienione w pkt. 1, oraz od pozostałych umów - naczelnik urzędu skarbowego właściwy ze względu na miejsce zamieszkania lub siedzibę podatnika, a w przypadku gdy obowiązek zapłaty ciąży solidarnie na kilku podmiotach - naczelnik urzędu skarbowego właściwy ze względu na miejsce zamieszkania lub siedzibę jednego z tych podmiotów,
+3.od ustanowienia hipoteki – naczelnik urzędu skarbowego właściwy ze względu na miejsce zamieszkania lub siedzibę składającego oświadczenie woli o ustanowieniu tego prawa, a w przypadku, gdy oświadczenie woli składane jest przez kilka podmiotów – naczelnik urzędu skarbowego właściwy ze względu na miejsce zamieszkania lub siedzibę jednego z tych podmiotów,
+4.od umowy spółki - naczelnik urzędu skarbowego właściwy ze względu na siedzibę spółki.
+Organem podatkowym właściwym miejscowo w sprawach PCC od umów zamiany:
+
+-których przedmiotem jest wyłącznie przeniesienie własności rzeczy lub praw majątkowych wymienionych w powyższym pkt. 1, organem podatkowym właściwym miejscowo jest naczelnik urzędu skarbowego właściwy ze względu na miejsce położenia nieruchomości - lub prawa, którego wartość jest wyższa a do określenia wartości nieruchomości - naczelnik urzędu skarbowego właściwy ze względu na miejsce położenia nieruchomości;
+-których przedmiotem jest przeniesienie własności rzeczy lub praw majątkowych wymienionych w powyższym pkt. 1 i innych rzeczy lub praw majątkowych, w tym rzeczy położonych za granicą i praw tam wykonywanych jest naczelnik urzędu skarbowego właściwy ze względu na położenie nieruchomości na terytorium Rzeczypospolitej Polskiej;
+-w pozostałych przypadkach jest naczelnik urzędu skarbowego właściwy ze względu na miejsce zamieszkania lub siedzibę jednej ze stron.
+Ważne: jeżeli nie można ustalić właściwości miejscowej organu podatkowego w sposób, o którym mowa wyżej - właściwym organem podatkowym jest naczelnik Trzeciego Urzędu Skarbowego Warszawa-Śródmieście.
+Organem podatkowym właściwym miejscowo w sprawach PCC od umów, których przedmiotem są rzeczy znajdujące się za granicą lub prawa majątkowe wykonywane za granicą, jest naczelnik urzędu skarbowego właściwy ze względu na miejsce zamieszkania (siedzibę) nabywcy.
