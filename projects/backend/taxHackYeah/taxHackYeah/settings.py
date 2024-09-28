@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-dkd)wquz((jj!a7n-y-f_@=j@l#_^=t#9s_g$am-s*v(-9*#0k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.13.68']  # Zastąp 'twoj_adres_ip' swoim lokalnym adresem IP
 
 
 # Application definition
@@ -41,9 +41,19 @@ INSTALLED_APPS = [
     'api',
     'chatsocket',
     'rest_framework.authtoken',
+    'channels',
+    'rest_framework_simplejwt',
+   'drf_yasg',
+    'corsheaders'
 
 ]
-
+REST_FRAMEWORK = {
+     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -52,7 +62,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+CORS_ALLOW_ALL_ORIGINS = True  # Zezwól na dostęp z wszystkich adresów
 
 ROOT_URLCONF = 'taxHackYeah.urls'
 
@@ -71,8 +84,16 @@ TEMPLATES = [
         },
     },
 ]
-
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 WSGI_APPLICATION = 'taxHackYeah.wsgi.application'
+ASGI_APPLICATION = 'taxHackYeah.asgi.application'
 
 
 # Database
