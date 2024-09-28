@@ -7,7 +7,7 @@ def mp3_to_wav(mp3_path, wav_path):
     sound.export(wav_path, format="wav")
 
 # Recognize speech using the SpeechRecognition library
-def speech_to_text(wav_path):
+def wav_to_text(wav_path):
     recognizer = sr.Recognizer()
     with sr.AudioFile(wav_path) as source:
         audio_data = recognizer.record(source)
@@ -15,9 +15,15 @@ def speech_to_text(wav_path):
             text = recognizer.recognize_google(audio_data, language='pl-PL')
             return text
         except sr.UnknownValueError:
-            return "Sorry, I could not understand the audio."
+            return "Sorry, I could not understand the audio."     
         except sr.RequestError:
             return "Error: Could not request results."
+
+def mp3_to_text(mp3_path):
+    temp = 'temp.wav'
+    mp3_to_wav(mp3_path,temp)
+    wav_to_text(temp)
+
 
 # Example usage
 mp3_path = "someaudio.mp3"  # Path to the MP3 file
