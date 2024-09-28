@@ -1,9 +1,5 @@
-import time
-import random
 from openai import OpenAI
 import json
-
-from twisted.words.protocols.jabber.jstrports import client
 from dotenv import load_dotenv
 import os
 
@@ -20,11 +16,11 @@ class InputValidation(OpenAIClient):
         super().__init__()
         self.data = data
 
-    def is_user_input_valid(self,text):
+    def is_user_input_valid(self):
         try:
             response = self.client.moderations.create(
                 model="omni-moderation-latest",
-                input=text,
+                input=self.data,
             )
 
             for result in response.results:
@@ -62,20 +58,21 @@ class GeneralTaxAssistance(OpenAIClient):
             "Kwota czynności PLN": ""
         }
 
-    def procces(self,text):
+    def process(self) -> str|None:
         try:
-            thread = client.beta.threads.create()
-            message = client.beta.threads.messages.create(
+            print(self.data,1)
+            thread = self.client.beta.threads.create()
+            message = self.client.beta.threads.messages.create(
                 thread_id=thread.id,
                 role="user",
-                content=text,
+                content=self.data,
             )
-            run = client.beta.threads.runs.create_and_poll(
+            run = self.client.beta.threads.runs.create_and_poll(
                 thread_id=thread.id,
                 assistant_id="asst_pW8xH03z83PsHw4fugran4sM",
             )
             if run.status == 'completed':
-                messages = client.beta.threads.messages.list(
+                messages = self.client.beta.threads.messages.list(
                     thread_id=thread.id
                 )
                 result = messages.data[0].content[0].text.value
@@ -118,5 +115,3 @@ class GeneralTaxAssistance(OpenAIClient):
 
         return my_struct
 
-    async def async_fetch(self,text:str ="") -> str:
-        pass
