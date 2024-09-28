@@ -35,13 +35,9 @@ class TranscribeAudioView(APIView):
             except sr.RequestError:
                 response_data = {'error': 'Błąd połączenia z serwerem transkrypcji.'}
                 status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-
-
             return Response(response_data, status=status_code)
         else:
             return Response({'error': 'Błędny format dźwięku, lub brak dźwięku'}, status=status.HTTP_400_BAD_REQUEST)
 
-
-obj = TranscribeAudioView()
 
 
