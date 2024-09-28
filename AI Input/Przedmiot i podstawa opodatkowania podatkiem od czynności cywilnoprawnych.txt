@@ -1,0 +1,59 @@
+Przedmiot i podstawa opodatkowania podatkiem od czynności cywilnoprawnych
+
+Chcesz wiedzieć, co podlega opodatkowaniu od czynności cywilnoprawnych lub co stanowi podstawę opodatkowania? Sprawdź
+
+Przedmiot opodatkowania
+1.czynności cywilnoprawne:
+-umowy sprzedaży oraz zamiany rzeczy i praw majątkowych,
+-umowy pożyczki pieniędzy lub rzeczy oznaczonych tylko co do gatunku,
+-umowy darowizny - w części dotyczącej przejęcia przez obdarowanego długów i ciężarów albo zobowiązań darczyńcy,
+-umowy dożywocia,
+-umowy o dział spadku oraz umowy o zniesienie współwłasności - w części dotyczącej spłat lub dopłat,
+-ustanowienie hipoteki,
+-ustanowienie odpłatnego użytkowania, w tym nieprawidłowego, oraz odpłatnej służebności,
+-umowy depozytu nieprawidłowego,
+-umowy spółki;
+2.zmiany tych umów - jeżeli powodują podwyższenie podstawy opodatkowania podatkiem od czynności cywilnoprawnych;
+3.orzeczenia sądów i ugody - jeżeli wywołują takie same skutki prawne, jak podlegające opodatkowaniu czynności cywilnoprawne.
+Przepisy ustawy o umowie o dziale spadku oraz o umowie o zniesieniu współwłasności stosuje się odpowiednio do:
+
+-nabycia własności rzeczy wspólnej lub wspólnego prawa majątkowego albo ich części przez niektórych dotychczasowych współwłaścicieli na dalszą współwłasność – w części spłat lub dopłat,
+-odpłatnego wyodrębnienia własności lokali na rzecz niektórych lub wszystkich współwłaścicieli.
+Zmiana umowy, a spółka
+W przypadku umowy spółki za zmianę umowy uważa się:
+
+-przy spółce osobowej - wniesienie lub podwyższenie wkładu, którego wartość powoduje zwiększenie majątku spółki, pożyczkę udzieloną spółce przez wspólnika, dopłaty oraz oddanie przez wspólnika spółce rzeczy lub praw majątkowych do nieodpłatnego używania,
+-przy spółce kapitałowej - podwyższenie kapitału zakładowego z wkładów lub ze środków spółki oraz dopłaty,
+-przekształcenie lub łączenie spółek - jeżeli ich wynikiem jest zwiększenie majątku spółki osobowej lub podwyższenie kapitału zakładowego spółki kapitałowej,
+-przeniesienie na terytorium Rzeczypospolitej Polskiej z terytorium państwa niebędącego państwem członkowskim:
+	a.rzeczywistego ośrodka zarządzania spółki kapitałowej - jeżeli jej siedziba nie znajduje się na terytorium państwa członkowskiego,
+	b.siedziby spółki kapitałowej - jeżeli jej rzeczywisty ośrodek zarządzania nie znajduje się na terytorium państwa członkowskiego
+także wtedy, gdy czynność ta nie powoduje podwyższenia kapitału zakładowego.
+
+Czynności cywilnoprawne podlegają podatkowi, jeżeli ich przedmiotem są:
+
+-rzeczy, które znajdują się na terytorium Polski lub prawa majątkowe wykonywane na terytorium Polski,
+-rzeczy, które znajdują się za granicą lub prawa majątkowe wykonywane za granicą, jeżeli nabywca ma miejsce zamieszkania lub siedzibę w Polsce i czynność cywilnoprawna została dokonana w Polsce.
+Umowa zamiany podlega także PCC, jeżeli co najmniej jedna z rzeczy znajduje się na terytorium Polski lub jedno z praw majątkowych jest wykonywane na terytorium Polski.
+
+Umowa spółki oraz jej zmiana podlega podatkowi jeżeli w chwili dokonania czynności w Polsce znajduje się siedziba spółki osobowej, a w przypadku spółki kapitałowej rzeczywisty ośrodek zarządzania albo siedziba tej spółki, jeżeli jej rzeczywisty ośrodek zarządzania nie znajduje się na terytorium innego państwa członkowskiego.
+
+Podstawa opodatkowania
+Podstawę opodatkowania stanowi, przy:
+
+-umowie sprzedaży – wartość rynkowa rzeczy lub prawa majątkowego, które jest sprzedawane,
+-zamianie mieszkań – różnica ich wartości rynkowej,
+-zamianie rzeczy innych, niż mieszkania lub praw majątkowych – wartość rynkowa rzeczy lub praw majątkowych, od których przypada wyższy podatek,
+-darowiźnie – wartość długów i ciężarów albo zobowiązań, które przejmuje obdarowany,
+-przy dożywociu – wartość rynkowa nieruchomości,
+-przy zniesieniu współwłasności lub dziale spadku – wartość rynkowa rzeczy lub prawa majątkowego nabytego ponad wartość dotychczasowego udziału we współwłasności rzeczy lub spadku,
+-przy pożyczce i depozycie nieprawidłowym – kwota lub wartość pożyczki lub depozytu, a jeżeli liczba i suma wypłat nie była ustalona z góry (nie jest określona w umowie i nie jest znana na moment jej zawarcia), to wartość każdej z przekazanych kwot,
+-przy ustanowieniu odpłatnego użytkowania i odpłatnej służebności – wartość świadczeń za okres na jaki prawa te zostały ustanowione (jeśli na czas nieokreślony, to według oświadczenia podatnika wartość świadczeń za lat 10, albo wartość świadczeń należnych w miarę wykonywania umowy).
+Wartość rynkowa
+Wartość rynkową przedmiotu czynności cywilnoprawnych określa się na podstawie przeciętnych cen stosowanych w obrocie rzeczami tego samego rodzaju i gatunku, z uwzględnieniem ich miejsca położenia, stanu i stopnia zużycia, oraz w obrocie prawami majątkowymi tego samego rodzaju, z dnia dokonania tej czynności, bez odliczania długów i ciężarów.
+
+Jeżeli podatnik nie określił wartości przedmiotu czynności cywilnoprawnej lub wartość określona przez niego nie odpowiada, według oceny organu podatkowego, wartości rynkowej, organ ten wezwie podatnika do jej określenia, podwyższenia lub obniżenia - w terminie nie krótszym niż 14 dni od dnia doręczenia wezwania i poda jednocześnie wartość według własnej, wstępnej oceny.
+
+Jeżeli podatnik, pomimo wezwania, nie określił wartości lub podał wartość, która nie odpowiada wartości rynkowej, organ podatkowy określi ją z uwzględnieniem opinii biegłego lub przedłożonej przez podatnika wyceny rzeczoznawcy.
+
+Ważne! Jeżeli wartość określona z uwzględnieniem opinii biegłego powołanego przez organ podatkowy różni się o więcej niż 33% od wartości podanej przez podatnika - koszty opinii ponosi podatnik.

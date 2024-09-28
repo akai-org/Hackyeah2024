@@ -1,0 +1,66 @@
+Przykłady wypełniania formularza PCC-3
+Przypadek 1 : Zakup samochodu osobowego od osoby prywatnej
+Opis sytuacji:
+Michał Kowalski kupił używany samochód od osoby prywatnej za kwotę 30 000 zł. Zgodnie z polskim
+prawem, transakcja taka podlega podatkowi od czynności cywilnoprawnych (PCC), który wynosi 2%
+wartości rynkowej samochodu. Michał musi wypełnić formularz PCC-3
+i zapłacić należny podatek w ciągu 14 dni od daty zawarcia umowy.
+Wypełnienie formularza PCC-3:
+Numer PESEL.
+Data dokonania czynności: data zawarcia umowy kupna-sprzedaży.
+Sekcja A: Miejsce i cel składania deklaracji
+- Wybierz urząd skarbowy właściwy dla miejsca zamieszkania Kowalskiego Michała.
+- Wskazanie celu złożenia deklaracji: "złożenie deklaracji".
+Sekcja B: Dane identyfikacyjne podatnika
+- Podmiot składający deklarację: inny podmiot
+- Rodzaj podatnika: osoba fizyczna
+- Nazwisko, pierwsze imię, data urodzenia: Kowalski Michał,
+- Imię ojca, imię matki:
+- Adres zamieszkania.
+Sekcja C: Przedmiot opodatkowania i treść czynności cywilnoprawnej
+- Przedmiot opodatkowania: umowa
+- Miejsce położenia rzeczy lub miejsce wykonywania prawa majątkowego: terytorium RP
+- Miejsce dokonania czynności cywilnoprawnej: terytorium RP
+- Zwięzłe określenie treści i przedmiotu czynności cywilnoprawnej: (wskazać rodzaj umowy, jej
+przedmiot i cechy charakterystyczne tego przedmiotu, np. umowa sprzedaży samochodu osobowego,
+w tym jego marka, model, rok produkcji, numer nadwozia, numer rejestracyjny.)
+Sekcja D: Obliczenie należnego podatku
+- Podstawa opodatkowania dla umowy sprzedaży: 30 000
+- Stawka podatku: 2%.
+- Obliczony należny podatek: 30 000 * 2% = 600
+- Kwota należnego podatku: 600
+Sekcja F: Podatek do zapłaty
+- Kwota podatku do zapłaty: 600
+Pouczenia: Potwierdzam i akceptuję treść pouczenia.
+
+Przypadek 2: Pożyczka prywatna
+Opis sytuacji:
+Anna Nowak pożyczyła od swojej przyjaciółki Katarzyny 20 000 zł na remont mieszkania. Zgodnie z
+polskim prawem, umowa pożyczki powyżej kwoty 1 000 zł podlega podatkowi od czynności
+cywilnoprawnych (PCC) w wysokości 0,5% od kwoty pożyczki. Anna musi wypełnić formularz PCC-3 i
+zapłacić podatek w ciągu 14 dni od daty zawarcia umowy.
+Wypełnienie formularza PCC-3:
+Numer PESEL.
+Data dokonania czynności: data zawarcia umowy pożyczki
+Sekcja A: Miejsce i cel składania deklaracji
+- Wybierz urząd skarbowy właściwy dla miejsca zamieszkania Nowak Anny.
+- Wskazanie celu złożenia deklaracji: "złożenie deklaracji".
+Sekcja B: Dane identyfikacyjne podatnika
+- Podmiot składający deklarację: inny podmiot
+- Rodzaj podatnika: osoba fizyczna
+- Nazwisko, pierwsze imię, data urodzenia: Nowak Anna,
+- Imię ojca, imię matki:
+- Adres zamieszkania.
+Sekcja C: Przedmiot opodatkowania i treść czynności cywilnoprawnej
+- Przedmiot opodatkowania: umowa
+- Miejsce położenia rzeczy lub miejsce wykonywania prawa majątkowego: terytorium RP
+- Miejsce dokonania czynności cywilnoprawnej: terytorium RP
+- Zwięzłe określenie treści i przedmiotu czynności cywilnoprawnej: (wskazać rodzaj umowy)
+Sekcja D: Obliczenie należnego podatku
+- Podstawa opodatkowania dla umowy pożyczki: 20 000
+- Stawka podatku: 0,5%.
+- Obliczony należny podatek: 20 000 * 0,5 % = 100
+- Kwota należnego podatku: 100
+Sekcja F: Podatek do zapłaty
+- Kwota podatku do zapłaty: 100
+Pouczenia: Potwierdzam i akceptuję treść pouczenia.

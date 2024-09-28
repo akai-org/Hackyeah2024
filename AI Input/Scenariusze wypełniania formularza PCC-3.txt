@@ -1,0 +1,35 @@
+Scenariusze wypełniania formularza PCC-3
+
+Scenariusz 1
+Wczoraj kupiłem na giełdzie samochodowej Fiata 126p rok prod. 1975, kolor zielony. Przejechane ma
+1000000 km, idzie jak przecinak, nic nie stuka, nic nie puka, dosłownie igła. Zapłaciłem za niego 1000
+zł ale jego wartość jest wyższa o 2000 zł i co mam z tym zrobić ?
+Istotne pytania do scenariusza
+1. Podaj swoje dane (identyfikator podatkowy, nazwisko, pierwsze imię, data urodzenia, adres
+zamieszkania oraz urząd, do którego składasz deklarację)
+2. Czy kupiłeś sam czy z inną osobą
+Pola obowiązkowe, które muszą być wypełnione w scenariuszu 1:
+P1, P4, P5, P6_1, P7_5, P8_2, P9, P11, P12, P13, P14, P16, P18, P19, P20_1,P23, P26, P27, P46, P53,
+stawka podatku 2%, Pouczenia
+
+Scenariusz 2
+Kupiłem z bratem na spółkę Fiata 126p rok prod. 1975, kolor zielony. Przejechane ma 1000000 km,
+idzie jak przecinak, nic nie stuka, nic nie puka, dosłownie igła. Zapłaciliśmy za niego 3000 zł. Muszę
+zapłacić podatek.
+Istotne pytania do scenariusza
+1. Podaj swoje dane (identyfikator podatkowy, nazwisko, pierwsze imię, data urodzenia, adres
+zamieszkania oraz urząd, do którego składasz deklarację)
+2. Data zakupu
+3. Wartość rynkowa samochodu (nie zawsze jest to cena z umowy)
+Pola obowiązkowe, które muszą być wypełnione w scenariuszu 2:
+P1, P4, P5, P6_1, P7_1, P8_2, P9, P11, P12, P13, P14, P16, P18, P19, P20_1, P23, P26, P27, P46, P53,
+P62, stawka podatku 2%, Pouczenia
+
+Ogólne pytania do PCC-3 w przypadku zakupu samochodu
+1. Identyfikator podatkowy: NIP lub PESEL (jeśli prowadzisz działalność gospodarczą podaj NIP, jeśli
+nie prowadzisz działalności gospodarczej podaj PESEL)
+2. Data zakupu
+3. Urząd skarbowy do którego składasz deklarację
+4. Twoje dane: nazwisko, pierwsze imię, data urodzenia, adres zamieszkania
+5. Czy kupiłeś sam czy z inną osobą
+6. Wartość rynkowa samochodu
