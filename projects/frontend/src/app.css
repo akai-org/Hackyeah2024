@@ -78,7 +78,6 @@ main {
 
 body, div {
   font-family: "Open Sans", sans-serif;
-  /* outline: 1px solid black; */
   border-radius: 5px;
 }
 
@@ -229,4 +228,3 @@ input:focus, textarea:focus {
       font-size: 1.5rem;
   }
 }
-

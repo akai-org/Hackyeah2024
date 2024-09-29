@@ -163,7 +163,8 @@ function sendVoiceToBackend(audioBlob) {
   const formData = new FormData();
   formData.append('audio', audioBlob, 'voice.wav');
 
-  fetch('http://192.168.13.68:8000/api/audio/', {
+  // fetch('http://192.168.13.68:8000/api/audio/', {
+  fetch('/api/audio/', {
     method: 'POST',
     body: formData,
     headers: {
@@ -213,7 +214,8 @@ function sendFile(e) {
     formData.append("photo.jpg", file);
 
     // TODO: IP
-    fetch("http://192.168.13.68:8000/api/photo/", {
+    // fetch("http://192.168.13.68:8000/api/photo/", {
+    fetch("/api/photo/", {
       method: 'POST',
       body: formData,
       headers: {
@@ -285,7 +287,7 @@ function downloadFile(path) {
 
 <div class="chat">
   <div class="title">
-    <h1><i class="bi bi-file-earmark-check-fill fa-3x"></i>Your awesome assistant</h1>
+    <h1><i class="bi bi-file-earmark-check-fill fa-3x"></i>Twój personalny asystant</h1>
   </div>
   <div class="body">
     {#each messages as message}
@@ -300,8 +302,8 @@ function downloadFile(path) {
   </div>
   <div class="input">
     <input class="form-control" id="input-text" placeholder="O co chcesz sie zapytać" onkeypresscapture={keyEnter} type="text" bind:value={input} disabled={isDisabled}>
-    <button type="button" class="btn btn-secondary" onclick={send} disabled={isDisabled}><i class="bi bi-chat-right-text"></i> send</button>
-    <button type="button" class="btn btn-dark" onclick={audio} disabled={isDisabled}><i class="bi bi-mic"></i> {isAudioRunning ? "STOP AUDIO" : "GO AUDIO"}</button>
+    <button type="button" class="btn btn-secondary" onclick={send} disabled={isDisabled}><i class="bi bi-chat-right-text"></i> Wyślij</button>
+    <button type="button" class="btn btn-dark" onclick={audio} disabled={isDisabled}><i class="bi bi-mic"></i> {isAudioRunning ? "Stop Mikrofon" : "Mikrofon"}</button>
 
     <form onsubmit={sendFile} class="{taxFill ? '' : 'hidden'}">
       <input  type="file" id="special_file" disabled={isDisabled}>
@@ -314,8 +316,8 @@ function downloadFile(path) {
       </button>
     {:else if toCorrect.on === true}
       <div>
-        <button class="btn btn-success" onclick={() => handleCorrection(true)}>Data is correct</button>
-        <button class="btn btn-warning" onclick={() => handleCorrection(false)}>Data is not correct</button>
+        <button class="btn btn-success" onclick={() => handleCorrection(true)}>Dane są poprawne</button>
+        <button class="btn btn-warning" onclick={() => handleCorrection(false)}>Dane nie są poprawne</button>
       </div>
     {/if}
   </div>

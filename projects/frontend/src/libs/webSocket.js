@@ -6,7 +6,8 @@ export const wsSend = writable();
 const loc = window.location;
 const wsProtocol = loc.protocol === "https:" ? "wss://" : "ws://";
 // 8443
-const ws = new WebSocket(`ws://192.168.13.68:8001/ws/chat/`);
+// const ws = new WebSocket(`ws://192.168.13.68:8001/ws/chat/`);
+const ws = new WebSocket(`${wsProtocol}${loc.hostname}:8001/ws/chat/`);
 
 wsSend.subscribe(data => {
   if (data === undefined) return;

@@ -9,8 +9,11 @@ let error = $state();
 onMount(() => {
   messageStore.subscribe(msg => {
     if (msg.connected === false) {
-      // TODO: ENABLE
-      // error = true;
+      //error = true;
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
     }
   });
 });
@@ -28,7 +31,7 @@ onMount(() => {
   </div>
 
   <div class="tutorial">
-    <h2>Tutorial</h2>
+    <h2>Poradnik</h2>
 
     <p>Witamy na stronie eRachmistrz.egzaminword.pl gdzie asystent podatkowy wykorzystujący sztuczną inteligencję ma za zadanie pomóc ci wypełnić zeznanie podatkowe</p>
 

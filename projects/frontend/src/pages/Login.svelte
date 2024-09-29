@@ -12,7 +12,8 @@ async function login(e) {
   try {
     console.log("herhe");
     const response = await fetch(
-      "http://192.168.13.68:8000/api/token/",
+      // "http://192.168.13.68:8000/api/token/",
+      "/api/token/",
       {
         method: "POST",
         body: JSON.stringify({
