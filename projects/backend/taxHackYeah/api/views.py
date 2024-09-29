@@ -107,7 +107,7 @@ class OCRPhoto(viewsets.ViewSet):
         return Response({'extracted_text': extracted_text}, status=status.HTTP_200_OK)
 
 
-class TextAudioView(viewset.ViewSet):
+class TextAudioView(viewsets.ViewSet):
     def post(self, request, *args, **kwargs):
         text =  request.data.get('text')
         path_to_file = tts_from_string(text)

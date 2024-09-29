@@ -2,6 +2,7 @@ from openai import OpenAI
 import json
 from dotenv import load_dotenv
 import os
+from django.apps import apps
 
 
 class OpenAIClient:
@@ -116,3 +117,27 @@ class GeneralTaxAssistance(OpenAIClient):
 
         return my_struct
 
+class AdministrationTerr:
+    def __init__(self):
+        pass
+
+    def find_gmina(self, powiat):
+        gmina = apps.get_model('chatsocket', 'gmina')
+        obj = gmina.objects.filter(nazwa=powiat)
+        if obj:
+            return  obj[0].powiat.name, obj[0].powiat.voievodeship.name
+        return None
+
+    def find_powiat(self, voievodeship):
+        powiat = apps.get_model('chatsocket', 'powiat')
+        obj = powiat.objects.filter(nazwa=voievodeship)
+        if obj:
+            return obj[0].voievodeship.name
+        return None
+
+    def find_office(self, code):
+        office = apps.get_model('chatsocket', 'officecode')
+        obj = office.objects.filter(code=code)
+        if obj:
+            return obj[0].name
+        return None

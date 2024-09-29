@@ -23,3 +23,8 @@ class Gmina(models.Model):
     powiat = models.ForeignKey(Powiat, on_delete=models.CASCADE)
     on_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+class OfficeCode(models.Model):
+    code = models.CharField(max_length=10)
+    name = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
