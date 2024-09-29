@@ -11,7 +11,9 @@ body {
   font-size: 1.5rem;
   background-color: #275f96;
   color: #dbd4c2;
+  overflow: hidden;
 }
+
 body, div {
   font-family: "Open Sans", sans-serif;
   outline: 1px solid black;

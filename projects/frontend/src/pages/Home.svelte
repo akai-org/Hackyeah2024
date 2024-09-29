@@ -58,7 +58,15 @@ onMount(() => {
   grid-template-columns: 7fr 3fr;
 }
 
-.tutorial h1 {
+.main > div {
+  height: 100%;
+}
+
+.tutorial {
+  overflow: auto;
+}
+
+.tutorial h2 {
   font-size: 1.4rem;
 }
 
@@ -67,3 +75,4 @@ onMount(() => {
   font-size: 1rem;
 }
 </style>
+
