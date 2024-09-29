@@ -14,6 +14,7 @@ from rest_framework import status
 import os
 
 from .stt import wav_to_text
+from .tts import tts_from_string
 
 class ChatViewSet(viewsets.ModelViewSet):
     queryset = Chat.objects.all()
@@ -106,3 +107,13 @@ class OCRPhoto(viewsets.ViewSet):
         return Response({'extracted_text': extracted_text}, status=status.HTTP_200_OK)
 
 
+class TextAudioView(viewset.ViewSet):
+    def post(self, request, *args, **kwargs):
+        text =  request.data.get('text')
+        path_to_file = tts_from_string(text)
+        response_data = path_to_file
+        try:
+            return Response(response_data,status.HTTP_200_OK)
+        except:
+            return Response({'error': 'There was a problem with creating response'},
+                            status=status.HTTP_400_BAD_REQUEST)
