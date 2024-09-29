@@ -89,7 +89,7 @@ class OCRPhoto(viewsets.ViewSet):
 
     def post(self, request, *args, **kwargs):
 
-        file = request.FILES.get('photo')
+        file = request.FILES.get('photo.jpg')
 
         if not file:
             return Response({'error': 'Brak pliku zdjęcia.'}, status=status.HTTP_400_BAD_REQUEST)
@@ -97,8 +97,11 @@ class OCRPhoto(viewsets.ViewSet):
         if not file.name.endswith('.jpg'):
             return Response({'error': 'Błędny format pliku. Obsługiwane są tylko pliki JPG.'},
                             status=status.HTTP_400_BAD_REQUEST)
+        pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+        image = Image.open(file)
+        image = image.convert('RGB')
 
-        extracted_text = pytesseract.image_to_string(file)
+        extracted_text = pytesseract.image_to_string(image)
         print(extracted_text)
         return Response({'extracted_text': extracted_text}, status=status.HTTP_200_OK)
 
