@@ -141,3 +141,10 @@ class AdministrationTerr:
         if obj:
             return obj[0].name
         return None
+
+    def find_office_by_name(self, name):
+        office = apps.get_model('chatsocket', 'officecode')
+        obj = office.objects.filter(name=name.Upper())
+        if obj:
+            return obj[0].code
+        return None
