@@ -1,0 +1,68 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100vh;
+  background-color: #275f96;
+}
+.title{
+  padding: 2.5rem;
+  font-size: 1.5rem;
+  background-color: #275f96;
+  color: #dbd4c2;
+  overflow: hidden;
+}
+
+body, div {
+  font-family: "Open Sans", sans-serif;
+  outline: 1px solid black;
+  border-radius: 5px;
+}
+.chat {
+  background-color: #897a74;
+}
+
+.body{
+  background-color: #f4ecd8;
+}
+
+
+main {
+  height: 100%;
+}
+.tutorial{
+  background-color: #443d3a;
+  color: #aca19d;
+}
+.input{
+  background-color: #275f96;
+}
+.message{
+  background-color: #275f96;
+  color: 	#d6a780;
+  outline: 0px;
+  font-size: 2rem;
+}
+.btn-secondary {
+  padding: 1.5rem 2rem; /* Size for secondary button */
+  font-size: 2rem;
+  border-radius: 10px;
+  margin: 4px;
+}
+
+.btn-dark {
+  padding: 1.5rem 2rem; /* Size for secondary button */
+  font-size: 2rem;
+  border-radius: 10px;
+  margin: 4px;
+}
+
+.btn-info {
+  font-size: 1.5rem;
+}
+
+#input-text{
+  padding: 1.5rem;
+  content: 1rem 1rem;
+}
