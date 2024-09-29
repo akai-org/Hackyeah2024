@@ -249,14 +249,11 @@ class Generator(Validator):
         p_53.text = str(kwota_suma)  # Kwota podatku
     
         p_62 = etree.SubElement(pozycje, "P_62")
-        p_62.text = "1"  # Informacje dodatkowe
-    
-        # Pouczenia
+        p_62.text = "1"
         pouczenia = etree.SubElement(root, "Pouczenia")
         pouczenia.text = "1"
         xml = etree.tostring(root, pretty_print=True, xml_declaration=True, encoding="UTF-8")
         xml.decode("utf-8")
-        #save to file
         with open(f"{datetime.now()}.xml", "wb") as f:
             f.write(xml)
         return xml

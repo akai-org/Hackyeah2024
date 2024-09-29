@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: mydb
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  django:
+    image: python:3.12
+    container_name: django
+    volumes:
+      - C:/Users/patro/akai/Hackyeah2024/projects/backend/taxHackYeah:/app/backend/taxHackYeah  # Użycie ścieżki absolutnej Windows
+    working_dir: /app/backend/taxHackYeah  # Użycie pełnej ścieżki w kontenerze
+    command: bash -c "apt-get update && apt-get install -y ffmpeg && pip install -r requirements.txt && python manage.py migrate && daphne -b 0.0.0.0 -p 8000 taxHackYeah.asgi:application"
+    environment:
+      - DJANGO_SETTINGS_MODULE=taxHackYeah.settings
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000" # Port dla Django (http)
+
+  websocket:
+    image: python:3.12
+    container_name: websocket
+    volumes:
+      - C:/Users/patro/akai/Hackyeah2024/projects/backend/taxHackYeah:/app  # Montowanie katalogu głównego projektu do /app
+    working_dir: /app/backend/taxHackYeah  # Zaktualizowana ścieżka robocza w kontenerze
+    command: bash -c "pip install daphne && python manage.py runwebsocketserver"
+    depends_on:
+      - django
+    ports:
+      - "8002:8001"
+
+volumes:
+  postgres-data:
