@@ -8,13 +8,33 @@ let isDisabled = $state(false);
 let isAudioRunning = $state(false);
 // Special here means case when we detect that message contains `PCC` word therefore ask the user
 // if they want help with it??
-let specialCase = $state(true);
+let specialCase = $state(false);
 let taxFill = $state(false);
 // `on` should show the ui for confirming
 // `send` should send next WS packet as correction
 let toCorrect = $state({ on: false, send: false, correction_id: "" });
 
 onMount(() => {
+//  messages.push({
+//    text: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+//    owner: "user",
+//    id: 123,
+//  });
+//  messages.push({
+//    text: "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
+//    owner: "server",
+//    id: 321,
+//  });
+//  messages.push({
+//    text: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+//    owner: "user",
+//    id: 123,
+//  });
+//  messages.push({
+//    text: "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
+//    owner: "server",
+//    id: 321,
+//  });
 });
 
 messageStore.subscribe(msg => {
@@ -29,6 +49,17 @@ messageStore.subscribe(msg => {
 
   if (msg.correction_id !== undefined) {
     toCorrect = { on: true, send: true, correction_id: msg.correction_id };
+  }
+
+  if (msg.correction_done === true) {
+    if (msg.download_url) {
+      downloadFile(msg.download_url);
+    }
+
+    taxFill = false;
+    toCorrect = { on: false, send: false, correction_id: "" };
+    messages = [];
+    return;
   }
 
   // Check if we should suggest a help with PCC tax shit
@@ -135,7 +166,6 @@ function sendVoiceToBackend(audioBlob) {
   fetch('http://192.168.13.68:8000/api/audio/', {
     method: 'POST',
     body: formData,
-    class: "chat",
     headers: {
       "Authorization": `Bearer ${window.X_HIDDEN.access}`,
     },
@@ -149,9 +179,9 @@ function sendVoiceToBackend(audioBlob) {
         id: -1,
         time: Date.now(),
         owner: "user",
-        text: data.transcription,
+        text: data.message,
       });
-      wsSend.set({ message: data.transcription });
+      wsSend.set({ message: data.message });
 
       awaitResponse();
 
@@ -167,7 +197,6 @@ function awaitResponse() {
     awaiting: true,
     text: "Awating...",
     owner: "server",
-    class: "message"
   });
   isDisabled = true;
 }
@@ -229,6 +258,29 @@ function handleCorrection(is_correct) {
     input = messages.at(-1).text;
   }
 }
+
+function downloadFile(path) {
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      return response.blob();
+    })
+    .then(blob => {
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = "deklaracja.xml";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    })
+    .catch(error => {
+      console.error('There was an error downloading the file:', error);
+    });
+}
 </script>
 
 <div class="chat">
@@ -273,10 +325,16 @@ function handleCorrection(is_correct) {
 .chat {
   height: 100%;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
   font-size: 1rem;
+}
+
+.input {
+
 }
 
 .body {
