@@ -19,6 +19,9 @@ async function login(e) {
           username,
           password,
         }),
+        headers: {
+          "Content-Type": "application/json",
+        }
       }
     );
 
@@ -54,7 +57,7 @@ async function login(e) {
 
 
 <div class="main">
-  <form class="inner">
+  <form class="inner" onsubmit={login}>
     <h1>Login</h1>
 
     <label for="username">Username</label>
@@ -64,7 +67,7 @@ async function login(e) {
     <input type="password" id="password" bind:value={password}>
 
     <span class="{error === true ? 'show_error' : ''}">Wrong username or password</span>
-    <input type="button" value="Submit" onclick={login}>
+    <input type="submit" value="Submit">
   </form>
 </div>
 
@@ -97,7 +100,7 @@ input {
   font-size: 2rem;
 }
 
-input[type = "button"] {
+input[type = "submit"] {
   margin-top: 2rem;
 }
 
