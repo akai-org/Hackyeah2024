@@ -285,7 +285,7 @@ function downloadFile(path) {
 
 <div class="chat">
   <div class="title">
-    <h1>Your awesome assistant</h1>
+    <h1><i class="bi bi-file-earmark-check-fill fa-3x"></i>Your awesome assistant</h1>
   </div>
   <div class="body">
     {#each messages as message}
@@ -299,23 +299,23 @@ function downloadFile(path) {
     {/each}
   </div>
   <div class="input">
-    <input onkeypresscapture={keyEnter} type="text" bind:value={input} disabled={isDisabled}>
-    <button onclick={send} disabled={isDisabled}>send</button>
-    <button onclick={audio} disabled={isDisabled}>{isAudioRunning ? "STOP AUDIO" : "GO AUDIO"}</button>
+    <input class="form-control" id="input-text" placeholder="O co chcesz sie zapytać" onkeypresscapture={keyEnter} type="text" bind:value={input} disabled={isDisabled}>
+    <button type="button" class="btn btn-secondary" onclick={send} disabled={isDisabled}><i class="bi bi-chat-right-text"></i> send</button>
+    <button type="button" class="btn btn-dark" onclick={audio} disabled={isDisabled}><i class="bi bi-mic"></i> {isAudioRunning ? "STOP AUDIO" : "GO AUDIO"}</button>
 
     <form onsubmit={sendFile} class="{taxFill ? '' : 'hidden'}">
       <input  type="file" id="special_file" disabled={isDisabled}>
       <input type="submit" value="Send file" disabled={isDisabled}>
     </form>
 
-    {#if taxFill === false}
-      <button class="{specialCase ? '' : 'hidden'}" onclick={handleSpecialCase}>
-        Czy checesz pomocy w wypełnienieniu deklaracji PPC-3?
+    {#if taxFill === false} 
+      <button class="{specialCase ? '' : 'hidden'} btn btn-info" onclick={handleSpecialCase}>
+        Czy checesz pomocy w wypełnienieniu deklaracji PPC-3?  
       </button>
     {:else if toCorrect.on === true}
       <div>
-        <button onclick={() => handleCorrection(true)}>Data is correct</button>
-        <button onclick={() => handleCorrection(false)}>Data is not correct</button>
+        <button class="btn btn-success" onclick={() => handleCorrection(true)}>Data is correct</button>
+        <button class="btn btn-warning" onclick={() => handleCorrection(false)}>Data is not correct</button>
       </div>
     {/if}
   </div>
