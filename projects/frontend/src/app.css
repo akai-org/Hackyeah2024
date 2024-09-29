@@ -1,11 +1,73 @@
 html {
   height: 100%;
+  min-height: 100vh;
 }
 
-body {
+* {
+  box-sizing: border-box;
+}
+/* body {
   height: 100vh;
   background-color: #275f96;
 }
+
+main {
+  height: 100%;
+} */
+
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center; /* Center elements horizontally */
+  align-items: center; /* Center elements vertically */
+  min-height: 100vh;
+  margin: 0;
+  background-color: #275f96;
+}
+
+.main {
+  display: flex;
+  flex-direction: column; /* Rozmieszczenie w pionie */
+  height: 100vh; /* Pełna wysokość okna przeglądarki */
+  justify-content: space-between; /* Rozmieszczenie elementów równomiernie */
+  padding: 2rem;
+  box-sizing: border-box; /* Upewnij się, że padding jest uwzględniany */
+}
+
+
+.chat, .tutorial {
+  flex-grow: 1; /* Te elementy mogą się elastycznie rozszerzać */
+  overflow-y: auto; /* Przewijanie, jeśli treść przekroczy dostępne miejsce */
+  padding: 1rem;
+  margin: 1rem;
+  background-color: #f4ecd8;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tutorial {
+  max-height: 40%; /* Ograniczenie maksymalnej wysokości tutorialu */
+  flex-grow: 0; /* Tutorial nie będzie się nadmiernie rozciągać */
+}
+
+main {
+  flex-wrap: wrap;
+  flex-grow: 1;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%; /* Responsive width */
+  max-width: 1200px; /* Maximum width for large screens */
+  background-color: #f4ecd8;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
 .title{
   padding: 2.5rem;
   font-size: 1.5rem;
@@ -14,21 +76,19 @@ body {
 }
 body, div {
   font-family: "Open Sans", sans-serif;
-  outline: 1px solid black;
+  /* outline: 1px solid black; */
   border-radius: 5px;
-}
-.chat {
-  background-color: #897a74;
 }
 
 .body{
   background-color: #f4ecd8;
 }
 
-
-main {
-  height: 100%;
+/* .chat {
+  background-color: #897a74;
 }
+
+
 .tutorial{
   background-color: #443d3a;
   color: #aca19d;
@@ -41,16 +101,66 @@ main {
   color: 	#d6a780;
   outline: 0px;
   font-size: 2rem;
+} */
+
+.container {
+  background-color: #443d3a;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-collapse: collapse;
+  height: auto;
 }
-.btn-secondary {
-  padding: 1.5rem 2rem; /* Size for secondary button */
+
+.chat, .tutorial, .input, .message {
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.title {
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  background-color: #275f96;
+  color: #dbd4c2;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+p, h2 {
+  line-height: 1.6; /* Lepsza czytelność */
+  color: #443d3a;
+}
+
+.message {
+  font-size: 1.8rem; /* Slightly smaller for better fit */
+  margin-bottom: 1.5rem;
+}
+
+input, textarea {
+  padding: 1rem;
+  border: 2px solid #443d3a;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #d6a780;
+  box-shadow: 0 0 8px rgba(214, 167, 128, 0.5);
+  outline: none;
+}
+
+/* .btn-secondary {
+  padding: 1.5rem 2rem; 
   font-size: 2rem;
   border-radius: 10px;
   margin: 4px;
 }
 
 .btn-dark {
-  padding: 1.5rem 2rem; /* Size for secondary button */
+  padding: 1.5rem 2rem; 
   font-size: 2rem;
   border-radius: 10px;
   margin: 4px;
@@ -58,9 +168,63 @@ main {
 
 .btn-info {
   font-size: 1.5rem;
+} */
+.btn-secondary, .btn-dark {
+  padding: 1.5rem 2rem;
+  font-size: 2rem;
+  border-radius: 10px;
+  margin: 4px;
+  background-color: #443d3a; /* Darker tone */
+  color: #dbd4c2;
+  border: none;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease; /* Smooth transition */
 }
+
+.btn-secondary:hover, .btn-dark:hover {
+  background-color: #897a74; /* Lighter on hover */
+  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.btn-info {
+  font-size: 1.5rem;
+  background-color: #275f96; /* Consistent with input */
+  color: #f4ecd8;
+  border: none;
+  padding: 1.2rem 1.8rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-info:hover {
+  background-color: #d6a780;
+  color: #443d3a;
+}
+
 
 #input-text{
   padding: 1.5rem;
   content: 1rem 1rem;
 }
+
+@media (max-width: 768px) {
+  body {
+      padding: 1rem;
+  }
+
+  main {
+      width: 100%;
+      padding: 1rem;
+  }
+
+  .btn-secondary, .btn-dark {
+      font-size: 1.5rem;
+      padding: 1rem;
+  }
+
+  .message {
+      font-size: 1.5rem;
+  }
+}
+
