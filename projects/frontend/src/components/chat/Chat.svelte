@@ -10,6 +10,9 @@ let isAudioRunning = $state(false);
 // if they want help with it??
 let specialCase = $state(true);
 let taxFill = $state(false);
+// `on` should show the ui for confirming
+// `send` should send next WS packet as correction
+let toCorrect = $state({ on: false, send: false, correction_id: "" });
 
 onMount(() => {
 });
@@ -22,6 +25,10 @@ messageStore.subscribe(msg => {
   // "should" always evaluate to `true` -- sanity check
   if (messages.at(-1).awaiting) {
     messages.pop();
+  }
+
+  if (msg.correction_id !== undefined) {
+    toCorrect = { on: true, send: true, correction_id: msg.correction_id };
   }
 
   // Check if we should suggest a help with PCC tax shit
@@ -52,6 +59,20 @@ function send() {
     // NOPE
     return;
   }
+
+  if (toCorrect.send == true) {
+    wsSend.set({ correction: input, correction_id: toCorrect.correction_id });
+    messages.push({
+      id: -1,
+      time: Date.now(),
+      owner: "user",
+      text: input,
+    });
+
+
+    return;
+  }
+
   wsSend.set({ message: input });
   messages.push({
     id: -1,
@@ -144,6 +165,7 @@ function awaitResponse() {
   messages.push({
     awaiting: true,
     text: "Awating...",
+    owner: "server",
   });
   isDisabled = true;
 }
@@ -192,6 +214,19 @@ function handleSpecialCase() {
   wsSend.set({ mode: "PCC-3" });
   awaitResponse();
 }
+
+function handleCorrection(is_correct) {
+  isDisabled = true;
+
+  wsSend.set({ is_correct, correction_id: toCorrect.correction_id });
+  awaitResponse();
+
+  toCorrect.on = false;
+
+  if (is_correct === false) {
+    input = messages.at(-1).text;
+  }
+}
 </script>
 
 <div class="chat">
@@ -219,9 +254,16 @@ function handleSpecialCase() {
       <input type="submit" value="Send file" disabled={isDisabled}>
     </form>
 
-    <button class="{specialCase ? '' : 'hidden'}" onclick={handleSpecialCase}>
-      Czy checesz pomocy w wypełnienieniu deklaracji PPC-3?
-    </button>
+    {#if taxFill === false}
+      <button class="{specialCase ? '' : 'hidden'}" onclick={handleSpecialCase}>
+        Czy checesz pomocy w wypełnienieniu deklaracji PPC-3?
+      </button>
+    {:else if toCorrect.on === true}
+      <div>
+        <button onclick={() => handleCorrection(true)}>Data is correct</button>
+        <button onclick={() => handleCorrection(false)}>Data is not correct</button>
+      </div>
+    {/if}
   </div>
 </div>
 
