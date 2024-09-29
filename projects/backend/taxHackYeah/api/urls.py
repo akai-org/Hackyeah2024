@@ -2,7 +2,7 @@ from rest_framework_simplejwt.views import TokenVerifyView, TokenObtainPairView,
 
 from django.urls import path
 
-from .views import ChatViewSet, SessionViewSet, MessageViewSet, AnswersViewSet
+from .views import ChatViewSet, SessionViewSet, MessageViewSet, AnswersViewSet, TranscribeAudioView, OCRPhoto
 
 urlpatterns = [
 path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -16,5 +16,6 @@ path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('message/<int:pk>/', MessageViewSet.as_view({'get': 'retrieve'})),
     path('answers/', AnswersViewSet.as_view({'get': 'list'})),
     path('answers/<int:pk>/', AnswersViewSet.as_view({'get': 'retrieve'})),
-
+    path('audio/', TranscribeAudioView.as_view({'post': 'post'})),
+    path('photo/',OCRPhoto.as_view({'post': 'post'}))
 ]

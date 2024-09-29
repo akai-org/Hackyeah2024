@@ -1,10 +1,11 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
+from django.template.defaultfilters import first
 from rest_framework.exceptions import AuthenticationFailed
 from .integrations import InputValidation,GeneralTaxAssistance
 
 class ChatSockets(AsyncWebsocketConsumer):
-
+    first_message = True
     async def connect(self):
         # token = self.scope['query_string'].decode().split('token=')[1]
         try:
@@ -43,7 +44,9 @@ class ChatSockets(AsyncWebsocketConsumer):
             }))
             return
         chat_bot = GeneralTaxAssistance(message)
-        message = chat_bot.process()
+        message = chat_bot.process(first_message=self.first_message)
+        self.first_message = False
+
         if message is None:
             message = "To nie twoja wina, ale coś poszło nie tak"
 
