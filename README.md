@@ -9,6 +9,11 @@ eRachmistrz to asystent podatkowy wykorzystujący sztuczną inteligencję do wch
 ### Skąd pomysł na projekt
 Projekt powstał podczas [HackYeah 2024](https://hackyeah.pl/pl/#contact). Zadanie zostało przygotowane przez Ministerstwo Finansów oraz Krajową Administrację Skarbową. Było to zadanie, w którym wiedzieliśmy że spełnimy się w 100% wykorzystując naszą dobrą znajomość tworzenia stron internetowych.
 
+### Jak wypróbować nasz projekt
+Nasz projekt został postawiony na własnej domenie i wystarczy wejść w ten [link](https://erachmistrz.egzaminword.pl).
+</br>Login: admin
+</br>Hasło: admin
+
 ### Wykorzystane technologie
 [![My Skills](https://skillicons.dev/icons?i=python,django,typescript,svelte,ai)](https://skillicons.dev)
 
