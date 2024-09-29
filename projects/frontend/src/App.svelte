@@ -4,7 +4,7 @@ import Login from "./pages/Login.svelte";
 import { onMount } from "svelte";
 
 let messages = $state([]);
-let page = $state(1);
+let page = $state(0);
 
 onMount(() => {
 });
