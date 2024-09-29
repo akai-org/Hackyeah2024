@@ -41,3 +41,21 @@ class TranscribeAudioView(APIView):
 
 
 
+from django.http import FileResponse
+from rest_framework.views import APIView
+import os
+
+class AudioDownloadView(APIView):
+    def get(self, request, *args, **kwargs):
+        text = request['']
+        # Path to the audio file on the server
+        file_path = '/path/to/audio/file/sample.mp3'
+
+        # Open the file in binary mode and return a FileResponse
+        file = open(file_path, 'rb')
+        response = FileResponse(file, content_type='audio/mpeg')
+        
+        # Optional: Add Content-Disposition header to specify the file name and prompt download
+        response['Content-Disposition'] = f'attachment; filename="sample.mp3"'
+        
+        return response
