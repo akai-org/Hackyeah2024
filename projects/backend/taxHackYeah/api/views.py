@@ -69,7 +69,7 @@ class TranscribeAudioView(viewsets.ViewSet):
             audio.export(temp_file_path, format="wav", parameters=["-acodec", "pcm_s16le"])
 
             text = wav_to_text(temp_file_path)
-            response_data = {'transcription': text}
+            response_data = {'message': text}
             status_code = status.HTTP_200_OK
 
         except Exception as e:
