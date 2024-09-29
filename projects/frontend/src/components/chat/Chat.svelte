@@ -9,6 +9,7 @@ let isAudioRunning = $state(false);
 // Special here means case when we detect that message contains `PCC` word therefore ask the user
 // if they want help with it??
 let specialCase = $state(true);
+let taxFill = $state(false);
 
 onMount(() => {
 });
@@ -24,7 +25,7 @@ messageStore.subscribe(msg => {
   }
 
   // Check if we should suggest a help with PCC tax shit
-  {
+  if (taxFill !== true) {
     let m = msg.message;
 
     if (
@@ -51,7 +52,7 @@ function send() {
     // NOPE
     return;
   }
-  wsSend.set(JSON.stringify({ message: input }));
+  wsSend.set({ message: input });
   messages.push({
     id: -1,
     time: Date.now(),
@@ -110,10 +111,12 @@ function sendVoiceToBackend(audioBlob) {
   const formData = new FormData();
   formData.append('audio', audioBlob, 'voice.wav');
 
-  // TODO: IP
-  fetch('/api/upload-voice', {
+  fetch('http://192.168.13.68:8000/api/audio/', {
     method: 'POST',
     body: formData,
+    headers: {
+      "Authorization": `Bearer ${window.X_HIDDEN.access}`,
+    },
   })
     .then(response => {
       console.log("AUDIO RESPONSE:", response);
@@ -124,9 +127,9 @@ function sendVoiceToBackend(audioBlob) {
         id: -1,
         time: Date.now(),
         owner: "user",
-        text: data.message,
+        text: data.transcription,
       });
-      wsSend.set(JSON.stringify({ message: data.message }));
+      wsSend.set({ message: data.transcription });
 
       awaitResponse();
 
@@ -154,13 +157,17 @@ function sendFile(e) {
 
   if (file !== undefined) {
     const formData = new FormData();
-    formData.append(file.name, file);
+    formData.append("photo.jpg", file);
 
     // TODO: IP
-    fetch('/upload-file', {
+    fetch("http://192.168.13.68:8000/api/photo/", {
       method: 'POST',
       body: formData,
+      headers: {
+        "Authorization": `Bearer ${window.X_HIDDEN.access}`,
+      },
     })
+      .then(data => data.json())
       .then(data => {
         console.log('File uploaded successfully:', data);
 
@@ -177,6 +184,13 @@ function sendFile(e) {
   } else {
     alert('Please select a file to upload.');
   }
+}
+
+function handleSpecialCase() {
+  taxFill = true;
+
+  wsSend.set({ mode: "PCC-3" });
+  awaitResponse();
 }
 </script>
 
@@ -200,12 +214,14 @@ function sendFile(e) {
     <button onclick={send} disabled={isDisabled}>send</button>
     <button onclick={audio} disabled={isDisabled}>{isAudioRunning ? "STOP AUDIO" : "GO AUDIO"}</button>
 
-    <form onsubmit={sendFile}>
-      <input class="{specialCase ? '' : 'hidden'}" type="file" id="special_file" disabled={isDisabled}>
+    <form onsubmit={sendFile} class="{taxFill ? '' : 'hidden'}">
+      <input  type="file" id="special_file" disabled={isDisabled}>
       <input type="submit" value="Send file" disabled={isDisabled}>
     </form>
 
-    <button class="hidden">Czy checesz pomocy w wypełnienieniu deklaracji PPC-3?</button>
+    <button class="{specialCase ? '' : 'hidden'}" onclick={handleSpecialCase}>
+      Czy checesz pomocy w wypełnienieniu deklaracji PPC-3?
+    </button>
   </div>
 </div>
 
