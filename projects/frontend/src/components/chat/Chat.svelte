@@ -135,7 +135,6 @@ function sendVoiceToBackend(audioBlob) {
   fetch('http://192.168.13.68:8000/api/audio/', {
     method: 'POST',
     body: formData,
-    class: "chat",
     headers: {
       "Authorization": `Bearer ${window.X_HIDDEN.access}`,
     },
@@ -167,7 +166,6 @@ function awaitResponse() {
     awaiting: true,
     text: "Awating...",
     owner: "server",
-    class: "message"
   });
   isDisabled = true;
 }
